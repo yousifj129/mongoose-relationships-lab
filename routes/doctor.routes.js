@@ -1,4 +1,5 @@
 const Doctor = require("../models/Doctor")
+const Appointment = require("../models/Appointment")
 const router = require("express").Router()
 
 
@@ -32,8 +33,8 @@ router.post("/", async (req,res)=>{
 router.get("/:id", async (req,res)=>{
     try {
         const doctor = await Doctor.findById(req.params.id)
-
-        res.render("doctors/showDoctorDetails.ejs", {doctor:doctor})
+        const appointments =  await Appointment.find({doctor: req.params.id})
+        res.render("doctors/showDoctorDetails.ejs", {doctor:doctor, appointments:appointments})
     } catch (error) {
         console.log(error)
     }

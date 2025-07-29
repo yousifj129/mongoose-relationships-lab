@@ -68,6 +68,23 @@ router.post("/addnote/:id", async (req, res) => {
         console.log(error)
     }
 })
+router.get("/deletenote/:appointmentId/:noteId", async (req, res) => {
+    try {
+        const appointment = await Appointment.findById(req.params.appointmentId)
+
+        appointment.notes.forEach((elem)=>{
+            if(elem._id == req.params.noteId){
+                const index = appointment.notes.indexOf(elem)
+                appointment.notes.splice(index, 1);
+            }
+        })
+        console.log(appointment)
+        await Appointment.findByIdAndUpdate(req.params.appointmentId, appointment)
+        res.redirect("/appointments/"+req.params.appointmentId)
+    } catch (error) {
+        console.log(error)
+    }
+})
 router.put("/:id", async (req, res) => {
     try {
         await Appointment.findByIdAndUpdate(req.params.id, req.body)

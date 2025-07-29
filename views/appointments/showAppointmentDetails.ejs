@@ -31,6 +31,7 @@
           <h4><%= note.content %></h4>
           <p><%= note.createdAt %></p>
         </li>
+        <a href="/appointments/deletenote/<%= appointment._id %>/<%= note._id %>">Delete Note</a>
       <% }); %>
     </ul>
     <a href="/appointments">go back</a>

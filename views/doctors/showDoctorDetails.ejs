@@ -6,13 +6,22 @@
     <title>Details</title>
   </head>
   <body>
-        <%- include("../partials/nav.ejs") %>
+    <%- include("../partials/nav.ejs") %>
 
     <h1>Details</h1>
     <ul>
       <li>name: <%= doctor.name %></li>
       <li>specialty: <%= doctor.specialty %></li>
       <li>years of expreience: <%= doctor.yearsOfExperience %></li>
+      <br />
+      Assigned appointments: <% for( let i = 0; i < appointments.length; i++ ) {
+      %>
+      <p>
+        Patient Name: <%= appointments[i].patientName %> <br />
+        Reason: <%= appointments[i].reason %>
+        <a href="/appointments/<%=appointments[i]._id %>">see details</a>
+      </p>
+      <% } %>
     </ul>
     <a href="/doctors">go back</a>
   </body>
