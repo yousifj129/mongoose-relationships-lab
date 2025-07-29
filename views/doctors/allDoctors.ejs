@@ -11,11 +11,12 @@
     <ul>
       <% for( let i=0; i < allDoctors.length; i++ ) { %>
       <li>
-        <%= allDoctors[i].name%> 
-        <%= allDoctors[i].specialty %> 
-        <%=allDoctors[i].yearsOfExperience %>
+        Doctor's Name: <%= allDoctors[i].name%> <br>
+        Specialty: <%= allDoctors[i].specialty %> <br>
+        Years Of Expreience: <%=allDoctors[i].yearsOfExperience %>
         <a href="/doctors/<%= allDoctors[i]._id %>">see details</a>
       </li>
+      <br>
       <% } %>
     </ul>
     <a href="/doctors/new">new doctor</a>
