@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+<body>
+      <%- include("../partials/nav.ejs") %>
+
+    <h1>Details</h1>
+    <ul>
+      <h3>Patient Name: <%= appointment.patientName %></h3>
+      <li>Reason: <%= appointment.reason %></li>
+      <li>Date: <%= appointment.date %></li>
+      <li>Doctor: <%= appointment.doctor.name %></li>
+    </ul>
+    <form action="/appointments/addnote/<%= appointment._id %>" method="post">
+      <label for="content">note content: </label>
+      <textarea type="text" name="content" id="content"></textarea>
+<!--     
+      <label for="createdAt">created at: </label>
+      <input type="date" name="createdAt" id="createdAt"> -->
+
+      <input type="submit" value="submit">
+    </form>
+    notes:
+    <ul>
+      <% appointment.notes.forEach(note => { %>
+        <li>
+          <h4><%= note.content %></h4>
+          <p><%= note.createdAt %></p>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/appointments">go back</a>
+</body>
+</html>

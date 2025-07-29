@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+        <%- include("../partials/nav.ejs") %>
+
+    <ul>
+      <% allAppointments.forEach(appointment => { %>
+      <h3>Patient Name: <%= appointment.patientName %></h3>
+      <li>Reason: <%= appointment.reason %></li>
+      <li>Date: <%= appointment.date %></li>
+      <li>Doctor: <%= appointment.doctor.name %></li>
+      <a href="/appointments/<%= appointment._id %>">see details</a>
+
+      <% }); %>
+    </ul>
+    <a href="/appointments/new">create new appointment</a>
+    <a href="/">home page</a>
+  </body>
+</html>

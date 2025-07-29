@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <%- include("../partials/nav.ejs") %>
+
+    <h1>create new appointment</h1>
+    <form action="/appointments" method="post">
+        <label for="patientName">patient name: </label>
+        <input type="text" name="patientName" id="patientName">
+
+        <label for="date">date: </label>
+        <input type="date" name="date" id="date">
+        
+        <label for="reason">reason: </label>
+        <input type="text" name="reason" id="reason">
+
+        <label for="doctor">Doctor: </label>
+        <select name="doctor" id="doctor">
+            <% for( let i = 0; i < doctor.length; i++ ) { %>
+                <option value="<%= doctor[i]._id %>"><%= doctor[i].name %></option>
+            <% } %>
+        </select>
+    
+        <input type="submit" value="submit">
+    </form>
+        <a href="/appointments">go back</a>
+
+</body>
+</html>

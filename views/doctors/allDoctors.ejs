@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <%- include("../partials/nav.ejs") %>
+    <ul>
+      <% for( let i=0; i < allDoctors.length; i++ ) { %>
+      <li>
+        <%= allDoctors[i].name%> 
+        <%= allDoctors[i].specialty %> 
+        <%=allDoctors[i].yearsOfExperience %>
+        <a href="/doctors/<%= allDoctors[i]._id %>">see details</a>
+      </li>
+      <% } %>
+    </ul>
+    <a href="/doctors/new">new doctor</a>
+    <a href="/">home page</a>
+  </body>
+</html>
